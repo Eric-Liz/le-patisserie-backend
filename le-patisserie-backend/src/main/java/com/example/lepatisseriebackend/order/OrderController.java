@@ -1,7 +1,6 @@
 package com.example.lepatisseriebackend.order;
 
 import com.example.lepatisseriebackend.product.Product;
-import com.example.lepatisseriebackend.user.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,12 +29,11 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody CreateOrderRequest createOrderRequest) {
-        User user = createOrderRequest.getUser();
+    public ResponseEntity<Order> createOrder(@RequestBody CreateOrderRequest createOrderRequest,String userName) {
         List<Product> products = createOrderRequest.getProducts();
         Double totalPrice = createOrderRequest.getTotalPrice();
 
-        Order order = orderService.createOrder(user, products, totalPrice);
+        Order order = orderService.createOrder(userName, products, totalPrice);
         return ResponseEntity.ok(order);
     }
 

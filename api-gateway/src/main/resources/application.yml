@@ -1,8 +1,17 @@
 spring:
   cloud:
     gateway:
+      globalcors:
+        default-filters:
+          - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "localhost:3000"
+            allowedMethods:
+              - POST
       routes:
         - id: le-patisserie-backend
           uri: lb://le-patisserie-backend
           predicates:
             - Path=/patisserie/**
+

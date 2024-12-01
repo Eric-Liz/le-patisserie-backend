@@ -1,7 +1,9 @@
 package com.example.authorizationservice.config;
 
 import com.example.authorizationservice.entity.User;
+import com.example.authorizationservice.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -11,15 +13,18 @@ public class CustomUserDetailsObject implements UserDetails {
 
     private String username;
     private String password;
+    private UserRole role;
 
     public CustomUserDetailsObject(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.role = user.getRole();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        if(this.role == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.example.lepatisseriebackend.order;
 import com.example.lepatisseriebackend.product.Product;
-import com.example.lepatisseriebackend.user.User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,9 +23,9 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
-    public Order createOrder(User user, List<Product> products, Double totalPrice) {
+    public Order createOrder(String userName, List<Product> products, Double totalPrice) {
         Order order = new Order();
-        order.setUser(user);
+        order.setUsername(userName);
         order.setProducts(products);
         order.setTotalPrice(totalPrice);
         order.setDataPedido(LocalDateTime.now());

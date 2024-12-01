@@ -1,7 +1,6 @@
 package com.example.lepatisseriebackend.order;
 
 import com.example.lepatisseriebackend.product.Product;
-import com.example.lepatisseriebackend.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +18,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private User user;
+    private String username;
     private LocalDateTime dataPedido;
     @OneToMany(mappedBy = "order" , cascade = CascadeType.ALL)
     private List<Product> products;
