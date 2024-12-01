@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: le-patisserie-backend
+          uri: lb://le-patisserie-backend
+          predicates:
+            - Path=/patisserie/**
