@@ -4,3 +4,6 @@ INSERT INTO product (id, name, description, price, image_url, category, availabl
 (3, 'Mendiant', 'A French chocolate disc topped with dried fruits and nuts.', 12.75, 'https://example.com/images/mendiant.jpg', 'CHOCOLATE', true, null),
 (4, 'Chocolate Bar', 'Rich dark chocolate bar, 70% cocoa.', 5.99, 'https://example.com/images/chocolate-bar.jpg', 'CHOCOLATE', true, null),
 (5, 'Truffles', 'Handmade chocolate truffles with a creamy ganache center.', 22.50, 'https://example.com/images/truffles.jpg', 'DESERT', true, null);
+INSERT INTO top_products (id, product_id) VALUES (1, 1);
+INSERT INTO top_products (id, product_id) VALUES (2, 2);
+INSERT INTO top_products (id, product_id) VALUES (3, 3);
